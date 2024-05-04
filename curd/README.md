@@ -1,3 +1,25 @@
+# User Management System
+
+This project is a simple user management system built with React.js. It allows users to view a list of users, add new users, edit existing users, and delete users.
+
+## Features
+
+- View a list of users with their details such as name, email, phone, address, website, and company.
+- Add a new user by providing their details.
+- Edit an existing user's information.
+- Delete a user from the list.
+
+## Getting Started
+
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
+
+### Prerequisites
+
+- Node.js installed on your machine
+- npm or yarn package manager
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
