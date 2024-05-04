@@ -50,8 +50,6 @@ const UserList = () => {
   };
 
   const handleAdd = () => {
-      // Implement logic to add a user 
-    
     axios
       .post("https://jsonplaceholder.typicode.com/users", formData)
       .then((response) => {
@@ -78,18 +76,20 @@ const UserList = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+    const updatedFormData = { ...formData };
+    // Handle nested fields
+    if (name.includes(".")) {
+      const [parent, child] = name.split(".");
+      updatedFormData[parent][child] = value;
+    } else {
+      updatedFormData[name] = value;
+    }
+    setFormData(updatedFormData);
   };
-
-  //  submit details 
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (editingUserId) {
-      // Implement logic to update an existing user
       axios
         .put(
           `https://jsonplaceholder.typicode.com/users/${editingUserId}`,
@@ -108,6 +108,8 @@ const UserList = () => {
         .catch((error) => {
           console.error("Error updating user: ", error);
         });
+    } else {
+      handleAdd(); // Call handleAdd for adding new user
     }
   };
 
